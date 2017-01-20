@@ -62,22 +62,22 @@ object SparkSubmitPlugin extends AutoPlugin {
           }
 
           val options: Seq[String] = {
-            if (sparkArgs.contains("--help") || (sparkArgs.isEmpty && appArgs.isEmpty)) {
-              Seq("--help")
-            } else {
-              if (!sparkArgs.contains("--master")) {
-                sparkArgs ++= Seq("--master", sparkSubmitMaster.value(sparkArgs, appArgs))
-              }
-
-              sparkSubmitPropertiesFile.value foreach {
-                file =>
-                  if (!sparkArgs.contains("--properties-file")) {
-                    sparkArgs ++= Seq("--properties-file", file)
-                  }
-              }
+//            if (sparkArgs.contains("--help") || (sparkArgs.isEmpty && appArgs.isEmpty)) {
+//              Seq("--help")
+//            } else {
+//              if (!sparkArgs.contains("--master")) {
+//                sparkArgs ++= Seq("--master", sparkSubmitMaster.value(sparkArgs, appArgs))
+//              }
+//
+//              sparkSubmitPropertiesFile.value foreach {
+//                file =>
+//                  if (!sparkArgs.contains("--properties-file")) {
+//                    sparkArgs ++= Seq("--properties-file", file)
+//                  }
+//              }
 
               (sparkArgs :+ jar) ++ appArgs
-            }
+//            }
           }
 
 
