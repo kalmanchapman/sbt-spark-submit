@@ -116,7 +116,7 @@ object SparkSubmitPlugin extends AutoPlugin {
       sparkSubmitJar := (packageBin in Compile).value.getAbsolutePath,
       sparkSubmitAppArgs := Seq(),
       sparkSubmitSparkArgs := Seq(),
-      sparkSubmitMaster := {(_, _) => "local"},
+      sparkSubmitMaster := {(_, _) => sys.env.getOrElse("SPARK_MASTER_URL", "local")},
       sparkSubmitPropertiesFile := None,
       sparkSubmitClasspath := data((fullClasspath in Compile).value)
     )
